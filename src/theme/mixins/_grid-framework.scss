@@ -1,0 +1,19 @@
+// Used only by panova to generate the correct number of grid classes given
+
+@mixin make-grid-colums($columns: $grid-columns,$gutter: $grid-gutter-width,$breakpoints: $grid-breakpoints) {
+    %grid-column {
+        position: relative;
+        width: 100%;
+        min-height: 1px;
+        padding-left: ($gutter / 2);
+        padding-right: ($gutter / 2);
+    }
+    
+    @each $breakpoint in map-keys($breakpoints) {
+        @for $i from 1 through $columns {
+            .col-#{$breakpoint}-#{$i} {
+                @extend %grid-column;
+            }
+        }
+    }
+}
