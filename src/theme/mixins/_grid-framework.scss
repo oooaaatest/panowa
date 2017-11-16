@@ -15,5 +15,38 @@
                 @extend %grid-column;
             }
         }
+        .col-#{$breakpoint},
+        .col-#{$breakpoint}-auto {
+            @extend %grid-column;
+        }
+
+        @include media-breakpoint-up($breakpoint,$breakpoints){
+            .col-#{$breakpoint} {
+                flex-basis: 0;
+                flex-grow: 0;
+                max-width: 100%;
+            }
+            .col-#{$breakpoint}-auto {
+                flex-basis: 0;
+                flex-grow: 0;
+                max-width: 100%;
+            }
+
+            @for $i from 1 through $columns {
+                .col-#{$breakpoint}-#{i} {
+                    @include make-col($i, $columns);
+                }
+            }
+
+            .order-#{$breakpoint}-first {
+                order: -1;
+            }
+
+            @for $i from 1 through $columns {
+                .order-#{$breakpoint}-#{$i} {
+                  order: $i;
+                }
+            }
+        }
     }
 }
