@@ -6,7 +6,6 @@ var cssmin = require('gulp-cssmin');
 gulp.task('sass',function(){
     return gulp.src('./scss/*.scss')
                .pipe(plumber())
-               .pipe(sass({outputStyle: 'expanded'}).on('error', sass.logError))
                .pipe(cssmin())
                .pipe(gulp.dest('./css'));
 })
