@@ -1,0 +1,52 @@
+// Used only by panova to generate the correct number of grid classes given
+
+@mixin make-grid-columns($columns: $grid-columns,$gutter: $grid-gutter-width,$breakpoints: $grid-breakpoints) {
+    %grid-column {
+        position: relative;
+        width: 100%;
+        min-height: 1px;
+        padding-left: ($gutter / 2);
+        padding-right: ($gutter / 2);
+    }
+    
+    @each $breakpoint in map-keys($breakpoints) {
+        @for $i from 1 through $columns {
+            .col-#{$breakpoint}-#{$i} {
+                @extend %grid-column;
+            }
+        }
+        .col-#{$breakpoint},
+        .col-#{$breakpoint}-auto {
+            @extend %grid-column;
+        }
+
+        // @include media-breakpoint-up($breakpoint,$breakpoints){
+        //     .col-#{$breakpoint} {
+        //         flex-basis: 0;
+        //         flex-grow: 0;
+        //         max-width: 100%;
+        //     }
+        //     .col-#{$breakpoint}-auto {
+        //         flex-basis: 0;
+        //         flex-grow: 0;
+        //         max-width: 100%;
+        //     }
+
+        //     @for $i from 1 through $columns {
+        //         .col-#{$breakpoint}-#{i} {
+        //             @include make-col($i, $columns);
+        //         }
+        //     }
+
+        //     .order-#{$breakpoint}-first {
+        //         order: -1;
+        //     }
+
+        //     @for $i from 1 through $columns {
+        //         .order-#{$breakpoint}-#{$i} {
+        //           order: $i;
+        //         }
+        //     }
+        // }
+    }
+}

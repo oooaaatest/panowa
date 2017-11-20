@@ -20,6 +20,7 @@
     12- Alerts
     13- Progress bars
     14- Breadcrumbs
+    14- Options
 */
 
 
@@ -44,6 +45,9 @@ $container-max-widths: (
 // =1.3 Grid columns
 $grid-columns: 12 !default;
 $grid-gutter-width: 30px !default;
+
+// =14 Option
+$enable-grid-classes: true !default;
 
 
 
