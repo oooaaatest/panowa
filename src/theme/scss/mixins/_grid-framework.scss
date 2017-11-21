@@ -17,42 +17,45 @@
                 @extend %grid-column;
             }
         }
-        .col-#{$infix},
-        .col-#{$infix}-auto {
+        .col#{$infix},
+        .col#{$infix}-auto {
             @extend %grid-column;
         }
 
-        .col-#{$infix} {
-            flex-basis: 0;
-            flex-grow: 0;
-            max-width: 100%;
-        }
-        .col-#{$infix}-auto {
-            flex: 0 0 auto;
-            width: auto;
-            max-width: none;
-        }
-
-        @for $i from 1 through $columns {
-            .col-#{$infix}-#{i} {
-                @include make-col($i, $columns);
+        @include media-breakpoint-up($breakpoint, $breakpoints) {
+            // Provide basic `.col-{bp}` classes for equal-width flexbox columns
+            .col#{$infix} {
+                flex-basis: 0;
+                flex-grow: 1;
+                max-width: 100%;
             }
-        }
-
-        .order-#{$infix}-first {
-            order: -1;
-        }
-
-        @for $i from 1 through $columns {
-            .order-#{$infix}-#{$i} {
-                order: $i;
+            .col#{$infix}-auto {
+                flex: 0 0 auto;
+                width: auto;
+                max-width: none;
             }
-        }
 
-        @for $i from 0 through ($columns - 1) {
-            @if not ($infix == "" and $i == 0) { // Avoid emitting useless .offset-0
-                .offset-#{$infix}-#{$i} {
-                    @include make-col-offset($i, $columns);
+            @for $i from 1 through $columns {
+                .col#{$infix}-#{$i} {
+                    @include make-col($i, $columns);
+                }
+            }
+
+            .order#{$infix}-first {
+                order: -1;
+            }
+
+            @for $i from 1 through $columns {
+                .order#{$infix}-#{$i} {
+                    order: $i;
+                }
+            }
+
+            @for $i from 0 through ($columns - 1) {
+                @if not ($infix == "" and $i == 0) { // Avoid emitting useless .offset-0
+                    .offset#{$infix}-#{$i} {
+                        @include make-col-offset($i, $columns);
+                    }
                 }
             }
         }

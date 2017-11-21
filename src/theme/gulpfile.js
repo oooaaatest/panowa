@@ -5,9 +5,10 @@ var cssmin = require('gulp-cssmin');
 
 gulp.task('sass',function(){
     return gulp.src('./scss/*.scss')
-               .pipe(plumber())
-               .pipe(cssmin())
-               .pipe(gulp.dest('./css'));
+                .pipe(plumber())
+                .pipe(sass())
+                .pipe(cssmin())
+                .pipe(gulp.dest('./css'));
 })
 
 gulp.task('build', ['sass']);
