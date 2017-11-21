@@ -1,4 +1,4 @@
-//Grid system
+// Grid system
 
 @mixin make-container() {
     width: 100%;
@@ -24,3 +24,14 @@
     padding-left: ($grid-gutter-width / 2);
 }
 
+// set the percentage of each column
+@mixin make-col($size, $columns: $grid-columns) {
+    flex: 0 0 percentage($size / $columns);
+    max-width: percentage($size / $columns);
+}
+
+// set offset
+@mixin make-col-offset($size, $columns: $grid-columns) {
+    $num: $size / $columns;
+    margin-left: if($num == 0, 0 percentage($num));
+}
