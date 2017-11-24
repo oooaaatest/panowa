@@ -1,4 +1,13 @@
+
+
+// basic layout
+import PnCol from './components/col'
+import PnRow from './components/row'
+
+
 const components = [
+    PnCol,
+    PnRow
 
 ]
 
@@ -14,5 +23,7 @@ if (typeof window !== 'undefined' && window.Vue) {
 }
 
 module.exports = {
-    install
+    install,
+    PnCol,
+    PnRow
 }

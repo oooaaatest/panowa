@@ -1,7 +1,7 @@
 import PnCol from './src/col'
 
-ElCol.install = function(Vue) {
-  Vue.component(ElCol.name, ElCol);
+PnCol.install = function(Vue) {
+  Vue.component(PnCol.name, PnCol);
 };
 
-export default PmCol;
+export default PnCol;

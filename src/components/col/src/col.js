@@ -5,7 +5,7 @@ export default {
     props: {
         span: {
             type: Number,
-            default: 24
+            default: 12
         },
         tag: {
             type: String,
@@ -51,16 +51,16 @@ export default {
 
         ['xs', 'sm', 'md', 'lg', 'xl'].forEach(size => {
             if (typeof this[size] === 'number') {
-                classList.push(`col-${size}-${this[size]}`);
+              classList.push(`col-${size}-${this[size]}`);
             } else if (typeof this[size] === 'object') {
-                let props = this[size];
-                Object.keys(props).forEach(prop => {
-                    classList.push(
-                        prop !== 'span'
-                        ? `col-${size}-${prop}-${props[prop]}`
-                        ? `col-${size}-${props[prop]}`
-                    );
-                })
+              let props = this[size];
+              Object.keys(props).forEach(prop => {
+                classList.push(
+                    prop !== 'span'
+                    ? `col-${size}-${prop}-${props[prop]}`
+                    : `col-${size}-${props[prop]}`
+                );
+              });
             }
         });
 
@@ -69,5 +69,6 @@ export default {
             style
         },this.$slots.default);
     }
+
 
 }
