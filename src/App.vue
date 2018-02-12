@@ -1,16 +1,19 @@
 <template>
   <div id="app">
     <img src="./assets/logo.png">
+    <Comment-Modal></Comment-Modal>
   </div>
 </template>
 
 <script>
-import './theme/css/  .css'
+import './theme/css/panova.css'
+import CommentModal from './components/CommentModal'
 
 export default {
   name: 'app',
   components: {
-    }
+    CommentModal: 'Comment-Modal'
+  }
   }
 </script>
 
